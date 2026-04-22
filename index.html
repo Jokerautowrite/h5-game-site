@@ -1,19 +1,114 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>H5 游戏站点</title>
-  <style>
-    body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
-    .card{max-width:640px;padding:28px;border:1px solid #334155;border-radius:16px;background:#111827}
-    h1{margin:0 0 10px;font-size:28px} p{opacity:.9;line-height:1.6}
-  </style>
-</head>
-<body>
-  <div class="card">
-    <h1>网站已搭好 ✅</h1>
-    <p>这里是你的 H5 游戏站点占位页。你后续把游戏文件（index.html + assets）推上来就能直接访问。</p>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>龙虾幸存者（动物题材）</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">🦞</div>
+          <div class="title">
+            <div class="name">龙虾幸存者</div>
+            <div class="sub">WASD/方向键移动 · 空格暂停 · R重开</div>
+          </div>
+        </div>
+        <div class="right">
+          <div class="pill" id="pillFps">FPS: --</div>
+          <div class="pill" id="pillTime">时间: 0:00</div>
+        </div>
+      </header>
+
+      <main class="main">
+        <canvas id="game" width="960" height="540"></canvas>
+
+        <section class="panel" aria-label="游戏信息">
+          <div class="stat">
+            <div class="k">生命</div>
+            <div class="v" id="uiHp">--</div>
+          </div>
+          <div class="stat">
+            <div class="k">等级</div>
+            <div class="v" id="uiLevel">--</div>
+          </div>
+          <div class="stat">
+            <div class="k">经验</div>
+            <div class="v" id="uiXp">--</div>
+          </div>
+          <div class="stat">
+            <div class="k">击败</div>
+            <div class="v" id="uiKills">--</div>
+          </div>
+          <div class="stat">
+            <div class="k">分数</div>
+            <div class="v" id="uiScore">--</div>
+          </div>
+          <div class="stat">
+            <div class="k">武器</div>
+            <div class="v" id="uiWeapon">--</div>
+          </div>
+          <div class="hint">
+            <div class="h">目标</div>
+            <div class="p">
+              撑过尽可能久，吃掉掉落的“气泡经验”。每次升级都会出现三选一强化。
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="overlay" id="overlayStart" role="dialog" aria-modal="true">
+        <div class="card">
+          <div class="big">龙虾幸存者（卡通版）</div>
+          <div class="small">
+            开局更爽：前两波压力更低，龙虾有开局无敌与更强初始火力。<br />
+            操作：WASD/方向键移动 · 空格暂停 · R重开
+          </div>
+          <div class="actions">
+            <button id="btnStart">开始游戏</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="overlay hidden" id="overlayPause" role="dialog" aria-modal="true">
+        <div class="card">
+          <div class="big">已暂停</div>
+          <div class="small">按 <b>空格</b> 继续 · 按 <b>R</b> 重开</div>
+        </div>
+      </div>
+
+      <div class="overlay hidden" id="overlayGameOver" role="dialog" aria-modal="true">
+        <div class="card">
+          <div class="big">龙虾倒下了</div>
+          <div class="small" id="gameOverSummary">--</div>
+          <div class="actions">
+            <button id="btnRestart">R 重开</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="overlay hidden" id="overlayDowned" role="dialog" aria-modal="true">
+        <div class="card">
+          <div class="big">你被击倒了</div>
+          <div class="small" id="downedSummary">你可以选择复活继续战斗（将获得短暂无敌）。</div>
+          <div class="actions">
+            <button id="btnRevive">复活继续</button>
+            <button class="danger" id="btnGiveUp">结束本局</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="overlay hidden" id="overlayLevelUp" role="dialog" aria-modal="true">
+        <div class="card levelup-card">
+          <div class="big">升级！选择一个强化</div>
+          <div class="small">按 1/2/3 选择（或点击）</div>
+          <div class="choices" id="choices"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
 </html>
