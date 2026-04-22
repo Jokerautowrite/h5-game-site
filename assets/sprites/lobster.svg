@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="shell" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff8aa8"/>
+      <stop offset="1" stop-color="#ff3a67"/>
+    </linearGradient>
+    <linearGradient id="shell2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffb1c2"/>
+      <stop offset="1" stop-color="#ff5a80"/>
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#s)">
+    <!-- tail -->
+    <path d="M34 67c-8-12 3-28 18-30 10-2 17 4 18 12 1 10-6 19-15 23-8 4-16 2-21-5z"
+          fill="url(#shell2)" stroke="#2b1630" stroke-width="6" stroke-linejoin="round"/>
+
+    <!-- body -->
+    <ellipse cx="70" cy="64" rx="28" ry="24"
+             fill="url(#shell)" stroke="#2b1630" stroke-width="6"/>
+
+    <!-- belly highlight -->
+    <ellipse cx="62" cy="56" rx="12" ry="9" fill="#ffd7e1" opacity="0.55"/>
+
+    <!-- claws (two BIG claws) -->
+    <g>
+      <g transform="translate(-18,-14) scale(1.35)">
+        <path d="M96 43c13 3 22 15 18 27-3 9-12 14-21 12-7-2-11-7-11-13 0-5 3-8 7-9-2-6 1-13 7-17z"
+              fill="url(#shell2)" stroke="#2b1630" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M104 59c4-2 9-2 12 1 4 4 1 10-5 12-7 3-13-1-13-6 0-3 2-6 6-7z"
+              fill="#ffb3c4" stroke="#2b1630" stroke-width="6" stroke-linejoin="round"/>
+      </g>
+      <g transform="translate(-18,6) scale(1.35)">
+        <path d="M96 85c13-3 22-15 18-27-3-9-12-14-21-12-7 2-11 7-11 13 0 5 3 8 7 9-2 6 1 13 7 17z"
+              fill="url(#shell2)" stroke="#2b1630" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M104 69c4 2 9 2 12-1 4-4 1-10-5-12-7-3-13 1-13 6 0 3 2 6 6 7z"
+              fill="#ffb3c4" stroke="#2b1630" stroke-width="6" stroke-linejoin="round"/>
+      </g>
+    </g>
+
+    <!-- big eyes -->
+    <g>
+      <circle cx="80" cy="54" r="9.5" fill="#ffffff" stroke="#2b1630" stroke-width="5"/>
+      <circle cx="80" cy="54" r="3.8" fill="#151224"/>
+      <circle cx="80" cy="74" r="9.5" fill="#ffffff" stroke="#2b1630" stroke-width="5"/>
+      <circle cx="80" cy="74" r="3.8" fill="#151224"/>
+      <circle cx="83" cy="51" r="1.6" fill="#fff" opacity="0.9"/>
+      <circle cx="83" cy="71" r="1.6" fill="#fff" opacity="0.9"/>
+    </g>
+  </g>
+</svg>
